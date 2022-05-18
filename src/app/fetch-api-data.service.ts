@@ -4,7 +4,8 @@ import { Observable, throwError, catchError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'YOUR_HOSTED_API_URL_HERE/';
+const apiUrl = 'https://myflixerupper.herokuapp.com/';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,9 +38,10 @@ export class UserRegistrationService {
       {
         Authorization: 'Bearer ' + token,
       })
-    })
-    .pipe(catchError(this.handleError)
-    );
+    }).pipe(
+      catchError(this.handleError)
+      )
+    ;
   }
 
   //get one movie
