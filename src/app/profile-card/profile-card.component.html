@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<div class="profile-info">
 <mat-card>
     <mat-card-header>
       <mat-card-title>{{user.Username}}</mat-card-title>
@@ -20,11 +21,12 @@
         </button>
     </mat-card-actions>
 </mat-card>
-
+</div>
+<br/>
 <div class="favorite-movies-header">
   <h2 class="mat-card-favorite-movies">Favorite Movies</h2>
 </div>
-<div class="favorite-movies-container">
+<div class="favorite-movies-container" style="display: flex;">
   <mat-card *ngFor="let movie of favoriteMovies;" class="favorite-movies" style="flex: 1 1 auto;">
       <mat-card-header class="favorite-movies-title-header">
           <mat-card-title class="favorite-movies-title">
