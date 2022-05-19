@@ -99,7 +99,7 @@ getFavoriteMovies(): Observable<any> {
   const user = localStorage.getItem('user');
   return this.http.get(apiUrl +`users/${user}/favorite`, {headers: new HttpHeaders(
     {
-    Authorization: `Bearer+ ${token}`,
+      Authorization: 'Bearer ' + token,
       })
     })
   .pipe(catchError(this.handleError)
@@ -107,16 +107,16 @@ getFavoriteMovies(): Observable<any> {
 }
 
   // add a movie to favorite movies list
-  addFavoriteMovies(id:any): Observable<any> {
+ public addFavoriteMovies(id:any): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http.post(apiUrl + `users/${user}/favorite/${id}`, 
     {
       headers: new HttpHeaders({
-        Authorization: `Bearer+ ${token}`,
+        Authorization: 'Bearer ' + token,
       }),
     })
-    .pipe(catchError(this.handleError));
+    .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // delete movie from favorite movies list
@@ -126,7 +126,7 @@ getFavoriteMovies(): Observable<any> {
     return this.http
     .delete(apiUrl + `users/${user}/favorite/${id}`, {
       headers: new HttpHeaders({
-        Authorization: `Bearer+ ${token}`,
+        Authorization: 'Bearer ' + token,
       }),
     })
     .pipe(catchError(this.handleError));
@@ -168,7 +168,7 @@ getFavoriteMovies(): Observable<any> {
         Authorization: 'Bearer ' + token,
       }),
     })
-    .pipe(catchError(this.handleError));
+    .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
 // non-typed response extraction
