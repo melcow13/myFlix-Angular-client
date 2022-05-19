@@ -1,0 +1,17 @@
+.mat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 280px;
+    width: 280px;
+    margin: 15px;
+    padding: 20px 3px;
+}
+
+img {
+    width: 250px;
+    height: 350px;
+    object-fit: contain;
+}
