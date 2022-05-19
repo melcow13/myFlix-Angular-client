@@ -18,14 +18,26 @@ import { FormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import { GenreComponent } from './genre/genre.component';
+import { DirectorCardComponent } from './director-card/director-card.component';
+import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component'
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationFormComponent,
     UserLoginComponent,
     MovieCardComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    GenreComponent,
+    DirectorCardComponent,
+    ProfileCardComponent,
+    NavbarComponent,
+    EditUserComponent,
+    SynopsisCardComponent
   ],
   imports: [
     BrowserModule,
