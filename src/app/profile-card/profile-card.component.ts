@@ -36,7 +36,10 @@ export class ProfileCardComponent implements OnInit {
     this.getUser();
     this.getFavorites()  
   }
-
+/**
+ * get data of a user
+ * @function getUserProfile
+ */
   getUser(): void {
     const user = localStorage.getItem('user');
     if (user) {
@@ -47,6 +50,10 @@ export class ProfileCardComponent implements OnInit {
     }
   }
 
+  /**
+   * get array of user's favorite movies
+   * @function getAllMovies
+   */
   getFavorites(): void {
     let movies: any[] = [];
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
@@ -61,6 +68,11 @@ export class ProfileCardComponent implements OnInit {
     }); 
   }
 
+  /**
+   * delete movie from the favroite movie array
+   * @param id {string}
+   * @function deleteFavoriteMovies
+   */
   deletFavorite(id: string): void {
     this.fetchApiData.deleteFavoriteMovies(id).subscribe((res: any) => {
       this.snackBar.open('Successfully removed from favorite movies.', 'OK', {
@@ -71,6 +83,12 @@ export class ProfileCardComponent implements OnInit {
     })
   }
 
+  /**
+   * opens the dialog to display the EditUserComponent
+   * @param name {string}
+   * @param birthday {string}
+   * @param email {string}
+   */
   openEditUserDialog(name: string, birthday: string, email: string): void {
     this.dialog.open(EditUserComponent, {
       data: {
@@ -81,7 +99,11 @@ export class ProfileCardComponent implements OnInit {
       width: '500px'
     });
   }
-
+/**
+ * opens the dialog to display GenreComponent
+ * @param name {string}
+ * @param description {string}
+ */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -91,7 +113,12 @@ export class ProfileCardComponent implements OnInit {
       width: '500px'
     });
   }
-
+/**
+ * opens the dialog to display DirectorCardCompnonet
+ * @param name {string}
+ * @param bio {string}
+ * @param birth {string}
+ */
   openDirectorDialog(name: string, bio: string, birth: string): void {
     this.dialog.open(DirectorCardComponent, {
       data: {
@@ -103,6 +130,12 @@ export class ProfileCardComponent implements OnInit {
     });
   }
 
+  /**
+   * opens the dialog to display SynopsisCardComponent
+   * @param title {string}
+   * @param description {string}
+   * @param image {string}
+   */
   openSynopsisDialog(title: string, description: string, image: string): void {
     this.dialog.open(SynopsisCardComponent, {
       data: {

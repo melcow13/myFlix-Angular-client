@@ -27,7 +27,10 @@ export class MovieCardComponent implements OnInit {
   ngOnInit(): void {
     this.getMovies();
   }
-
+  /**
+   * uses API end-point to get a list of all movies in json format
+   * @function getAllMovies
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any)=>{
       this.movies = resp;
@@ -35,6 +38,12 @@ export class MovieCardComponent implements OnInit {
       return this.movies;
     })
   }
+
+  /**
+   * opens the dialog to disply the GenreComponent
+   * @param name {string}
+   * @param description {description}
+   */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -45,6 +54,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * opens the dialog to display the DirectorCardComponent
+   * @param name {string}
+   * @param bio {string}
+   * @param birth {string}
+   */
   openDirectorDialog(name: string, bio: string, birth: string): void {
     this.dialog.open(DirectorCardComponent, {
       data: {
@@ -55,7 +70,12 @@ export class MovieCardComponent implements OnInit {
       width: '500px'
     });
   }
-
+/**
+ * opens the dialog to display the SynopsisCardComponent
+ * @param title {string}
+ * @param description {string}
+ * @param image {string}
+ */
   openSynopsisDialog(title: string, description: string, image: string): void {
     this.dialog.open(SynopsisCardComponent, {
       data: {
@@ -66,6 +86,14 @@ export class MovieCardComponent implements OnInit {
       width: '500px'
     });
   }
+
+  /**
+   * use API end-point to add a movie to user's favorites
+   * @param id {string}
+   * @param Title {string}
+   * @function addFavoriteMovies
+   * @return array of movie object in json format
+   */
   addFavorite(id: string, Title: string): void {
     console.log(id);
     const token = localStorage.getItem('token');
